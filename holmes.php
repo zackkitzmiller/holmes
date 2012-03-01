@@ -22,6 +22,18 @@ class Holmes
         "generic" => "(kindle|mobile|mmp|midp|pocket|psp|symbian|smartphone|treo|up.browser|up.link|vodafone|wap|opera mini)"
     );
 
+    public static function __callStatic($name, $arguments)
+    {
+        $device = array_pop(explode('_', $name));
+        if (array_key_exists($device, self::$devices)) {
+            return self::is_device($device);
+        }
+        else
+        {
+            throw new Exception('Invalid Method');
+        }
+    }
+
     public static function is_mobile() {
         $accept = $_SERVER['HTTP_ACCEPT'];
 		
@@ -47,18 +59,6 @@ class Holmes
         foreach (array_keys(self::$devices) as $device)
         {
             if (self::is_device($device)) return $device;
-        }
-    }
-
-    public static function __callStatic($name, $arguments)
-    {
-        $device = array_pop(explode('_', $name));
-        if (array_key_exists($device, self::$devices)) {
-            return self::is_device($device);
-        }
-        else
-        {
-            throw new Exception('Invalid Method');
         }
     }
 
