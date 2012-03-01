@@ -35,7 +35,7 @@ class Holmes
 		}
 		else
 		{
-			foreach (self::$devices as $device => $regex)
+			foreach (array_keys(self::$devices) as $device)
 			{
 				if (self::is_device($device)) return true;
 			}
