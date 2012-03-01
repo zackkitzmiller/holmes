@@ -9,17 +9,17 @@ class Holmes
 {
     // regex and patterns from php-mobile-detect
     private static $devices = array(
-        "android" => "android.*mobile",
-        "androidtablet" => "android(?!.*mobile)",
-        "blackberry" => "blackberry",
-        "blackberrytablet" => "rim tablet os",
-        "iphone" => "(iphone|ipod)",
-        "ipad" => "(ipad)",
-        "ios" => "(iphone|ipod|ipad)",
-        "palm" => "(avantgo|blazer|elaine|hiptop|palm|plucker|xiino)",
-        "windows" => "windows ce; (iemobile|ppc|smartphone)",
-        "windowsphone" => "windows phone os",
-        "generic" => "(kindle|mobile|mmp|midp|pocket|psp|symbian|smartphone|treo|up.browser|up.link|vodafone|wap|opera mini)"
+        "android"           => "android.*mobile",
+        "androidtablet"     => "android(?!.*mobile)",
+        "blackberry"        => "blackberry",
+        "blackberrytablet"  => "rim tablet os",
+        "iphone"            => "(iphone|ipod)",
+        "ipad"              => "(ipad)",
+        "ios"               => "(iphone|ipod|ipad)",
+        "palm"              => "(avantgo|blazer|elaine|hiptop|palm|plucker|xiino)",
+        "windows"           => "windows ce; (iemobile|ppc|smartphone)",
+        "windowsphone"      => "windows phone os",
+        "generic"           => "(kindle|mobile|mmp|midp|pocket|psp|symbian|smartphone|treo|up.browser|up.link|vodafone|wap|opera mini)"
     );
 
     public static function __callStatic($name, $arguments)
