@@ -34,7 +34,8 @@ class Holmes
         }
     }
 
-    public static function is_mobile() {
+    public static function is_mobile()
+    {
         $accept = $_SERVER['HTTP_ACCEPT'];
 		
         if (isset($_SERVER['HTTP_X_WAP_PROFILE']) || isset($_SERVER['HTTP_PROFILE']))
@@ -55,7 +56,8 @@ class Holmes
         return false;
     }
 
-    public static function get_device() {
+    public static function get_device()
+    {
         foreach (array_keys(self::$devices) as $device)
         {
             if (self::is_device($device)) return $device;
