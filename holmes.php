@@ -69,5 +69,4 @@ class Holmes
         $ua = $_SERVER['HTTP_USER_AGENT'];	
         return (bool)preg_match("/" . self::$devices[$device] . "/i", $ua);
     }
-
 }
