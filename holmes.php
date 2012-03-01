@@ -64,7 +64,7 @@ class Holmes
         }
     }
 
-    public static function is_device($device)
+    protected static function is_device($device)
     {
         $ua = $_SERVER['HTTP_USER_AGENT'];	
         return (bool)preg_match("/" . self::$devices[$device] . "/i", $ua);
