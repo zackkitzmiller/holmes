@@ -1,8 +1,11 @@
 <?php
 
+class InvalidMethodException extends Exception {}
+class DeviceNotDetectedException extends Exception {}
+
 /**
 * Holmes
-* Based On http://code.google.com/p/php-mobile-detect/	
+* Based On http://code.google.com/p/php-mobile-detect/
 * @modified Zack Kitzmiller
 */
 class Holmes
@@ -30,14 +33,14 @@ class Holmes
         }
         else
         {
-            throw new Exception('Invalid Method');
+            throw new InvalidMethodException('Invalid method called.');
         }
     }
 
     public static function is_mobile()
     {
         $accept = $_SERVER['HTTP_ACCEPT'];
-		
+
         if (isset($_SERVER['HTTP_X_WAP_PROFILE']) || isset($_SERVER['HTTP_PROFILE']))
         {
             return true;
@@ -56,17 +59,24 @@ class Holmes
         return false;
     }
 
-    public static function get_device()
+    public static function get_device($default = false)
     {
         foreach (array_keys(self::$devices) as $device)
         {
             if (self::is_device($device)) return $device;
         }
+
+        if ($default === false)
+        {
+            throw new DeviceNotDetectedException('Could not detect device.');
+        }
+
+        return $default;
     }
 
     protected static function is_device($device)
     {
-        $ua = $_SERVER['HTTP_USER_AGENT'];	
+        $ua = $_SERVER['HTTP_USER_AGENT'];
         return (bool)preg_match("/" . self::$devices[$device] . "/i", $ua);
     }
 }
