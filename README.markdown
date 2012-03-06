@@ -4,6 +4,10 @@
 
 Holmes is an easy to use mobile detection library based on php-mobile-detect
 
+## Requirements
+
+* PHP 5.3+
+
 ## Usage
 
     // Determine if request is from a mobile device
