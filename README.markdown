@@ -35,6 +35,7 @@ Holmes is an easy to use mobile detection library based on php-mobile-detect
 * iPhone
 * iPad
 * iOS (any iOS device)
+* Nintendo DS/DSi
 * Palm
 * Windows
 * Windows Phone

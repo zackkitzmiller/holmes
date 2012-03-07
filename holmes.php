@@ -19,6 +19,7 @@ class Holmes
         "iphone"            => "(iphone|ipod)",
         "ipad"              => "(ipad)",
         "ios"               => "(iphone|ipod|ipad)",
+        'nintendo'          => "(nintendo dsi|nintendo ds)",
         "palm"              => "(avantgo|blazer|elaine|hiptop|palm|plucker|xiino)",
         "windows"           => "windows ce; (iemobile|ppc|smartphone)",
         "windowsphone"      => "windows phone os",
@@ -28,7 +29,8 @@ class Holmes
     public static function __callStatic($name, $arguments)
     {
         $device = array_pop(explode('_', $name));
-        if (array_key_exists($device, self::$devices)) {
+        if (array_key_exists($device, self::$devices))
+        {
             return self::is_device($device);
         }
         else
