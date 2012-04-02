@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Holmes by zackkitzmiller</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/zackkitzmiller/holmes">Fork Me on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Holmes</h1>
+            <h2>A simple, easy to use Mobile Detection library</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/zackkitzmiller/holmes/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/zackkitzmiller/holmes/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+      <span class="banner-fix"></span>
+
+      <section id="main_content">
+        <h1>Holmes (version 1.1)</h1>
+
+<h2>wat?</h2>
+
+<p>Holmes is an easy to use mobile detection library based on php-mobile-detect</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>PHP 5.3+</li>
+</ul><h2>Usage</h2>
+
+<pre><code>// Determine if request is from a mobile device
+Holmes::is_mobile(); // returns boolean
+
+// Determine the type of device
+$device = Holmes::get_device(); // returns string (or default)
+
+// Holmes::get_device() will throw a DeviceNotDetectedException exception if no default is passed
+// and could not detect a mobile device. Passing a default will return the default in lieu of an
+// exception
+
+// Determine if a specific device is being used
+// Any supported device below is acceptable
+// lowercased no spaces, obviously. &lt;3
+Holmes::is_ipad();
+Holmes::is_blackberrytablet();
+</code></pre>
+
+<h2>Supported Device Types</h2>
+
+<ul>
+<li>Android</li>
+<li>Android Tablet</li>
+<li>BlackBerry</li>
+<li>BlackBerry Tablet</li>
+<li>iPhone</li>
+<li>iPad</li>
+<li>iOS (any iOS device)</li>
+<li>Nintendo DS/DSi</li>
+<li>Palm</li>
+<li>Windows</li>
+<li>Windows Phone</li>
+<li>More generic text-only devices</li>
+</ul>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/zackkitzmiller">zackkitzmiller</a> can be found on <a href="https://github.com/zackkitzmiller/holmes">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
