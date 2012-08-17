@@ -19,7 +19,7 @@ class Holmes
         "iphone"            => "(iphone|ipod)",
         "ipad"              => "(ipad)",
         "ios"               => "(iphone|ipod|ipad)",
-        "chromeios"         => "CriOS"
+        "chromeios"         => "CriOS",
         'nintendo'          => "(nintendo dsi|nintendo ds)",
         "palm"              => "(avantgo|blazer|elaine|hiptop|palm|plucker|xiino)",
         "windows"           => "windows ce; (iemobile|ppc|smartphone)",
