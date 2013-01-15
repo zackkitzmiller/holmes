@@ -13,7 +13,7 @@ class Holmes
     // regex and patterns from php-mobile-detect
     private static $devices = array(
         "android"           => "android.*mobile",
-        "androidtablet"     => "android(?!.*mobile)",
+        "androidtablet"     => "android' + 'chrome/[.0-9]* (?!mobile)",
         "blackberry"        => "blackberry",
         "blackberrytablet"  => "rim tablet os",
         "iphone"            => "(iphone|ipod)",
@@ -38,6 +38,11 @@ class Holmes
         {
             throw new InvalidMethodException('Invalid method called.');
         }
+    }
+
+    public static function is_tablet()
+    {
+        return static::is_androidtablet() || static::is_ipad();
     }
 
     public static function is_mobile()
