@@ -1,4 +1,4 @@
-# Holmes (version 1.1)
+# Holmes (version 1.2)
 
 ## wat?
 
@@ -26,6 +26,8 @@ Holmes is an easy to use mobile detection library based on php-mobile-detect
     Holmes::is_ipad();
     Holmes::is_blackberrytablet();
 
+    // Modern (Android/iPad) tablet
+    Holmes::is_tablet();
 ## Supported Device Types
 
 * Android
