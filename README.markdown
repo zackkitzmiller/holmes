@@ -1,4 +1,4 @@
-# Holmes (version 1.2)
+# Holmes (version 2.0)
 
 ## wat?
 
