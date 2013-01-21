@@ -1,4 +1,4 @@
-# Holmes (version 1.2)
+# Holmes (version 2.0)
 
 ## wat?
 
@@ -11,23 +11,23 @@ Holmes is an easy to use mobile detection library based on php-mobile-detect
 ## Usage
 
     // Determine if request is from a mobile device
-    Holmes::is_mobile(); // returns boolean
+    Holmes\Holmes::is_mobile(); // returns boolean
 
     // Determine the type of device
-    $device = Holmes::get_device(); // returns string (or default)
+    $device = Holmes\Holmes::get_device(); // returns string (or default)
 
-    // Holmes::get_device() will throw a DeviceNotDetectedException exception if no default is passed
+    // Holmes\Holmes::get_device() will throw a DeviceNotDetectedException exception if no default is passed
     // and could not detect a mobile device. Passing a default will return the default in lieu of an
     // exception
 
     // Determine if a specific device is being used
     // Any supported device below is acceptable
     // lowercased no spaces, obviously. <3
-    Holmes::is_ipad();
-    Holmes::is_blackberrytablet();
+    Holmes\Holmes::is_ipad();
+    Holmes\Holmes::is_blackberrytablet();
 
     // Modern (Android/iPad) tablet
-    Holmes::is_tablet();
+    Holmes\Holmes::is_tablet();
 ## Supported Device Types
 
 * Android

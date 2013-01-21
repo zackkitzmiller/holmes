@@ -1,0 +1,11 @@
+{
+    "name": "holmes/holmes",
+    "description": "Mobile device detection",
+    "minimum-stability": "dev",
+    "require": {
+		"php": ">=5.3.3"
+	},
+	"autoload": {
+		"classmap": ["Holmes.php"]
+	}
+}
