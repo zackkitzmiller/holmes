@@ -1,7 +1,10 @@
 <?php
 
-class InvalidMethodException extends Exception {}
-class DeviceNotDetectedException extends Exception {}
+namespace Holmes;
+
+use BadMethodCallException;
+
+class DeviceNotDetectedException extends \Exception {}
 
 /**
 * Holmes
@@ -10,34 +13,63 @@ class DeviceNotDetectedException extends Exception {}
 */
 class Holmes
 {
-    // regex and patterns from php-mobile-detect
-    private static $devices = array(
+    /**
+     * @var  array  $devices  regex and patterns from php-mobile-detect
+     */
+    protected static $devices = array(
         "android"           => "android.*mobile",
-        "androidtablet"     => "android(?!.*mobile)",
+        "androidtablet"     => "android' + 'chrome\/[.0-9]* (?!mobile)",
         "blackberry"        => "blackberry",
         "blackberrytablet"  => "rim tablet os",
         "iphone"            => "(iphone|ipod)",
         "ipad"              => "(ipad)",
         "ios"               => "(iphone|ipod|ipad)",
+        "chromeios"         => "CriOS",
+        'nintendo'          => "(nintendo dsi|nintendo ds)",
         "palm"              => "(avantgo|blazer|elaine|hiptop|palm|plucker|xiino)",
         "windows"           => "windows ce; (iemobile|ppc|smartphone)",
         "windowsphone"      => "windows phone os",
         "generic"           => "(kindle|mobile|mmp|midp|pocket|psp|symbian|smartphone|treo|up.browser|up.link|vodafone|wap|opera mini)"
     );
 
+    /**
+     * Magic tester method.
+     *
+     * @param   string   $name       method name
+     * @param   array    $arguments  method arguments
+     * @return  boolean  static::isDevice result
+     */
     public static function __callStatic($name, $arguments)
     {
-        $device = array_pop(explode('_', $name));
-        if (array_key_exists($device, self::$devices)) {
-            return self::is_device($device);
+        $parts = preg_split('/(?=[A-Z])/', $name);
+        $device = strtolower(array_pop($parts));
+
+        if (array_key_exists($device, static::$devices))
+        {
+            return static::isDevice($device);
         }
         else
         {
-            throw new InvalidMethodException('Invalid method called.');
+            throw new BadMethodCallException('Invalid method called.');
         }
     }
 
-    public static function is_mobile()
+    /**
+     * Detect wether it's a tablet device
+     *
+     * @return  boolean  wether it's a tablet device
+     */
+    public static function isTablet()
+    {
+        return static::isAndroidtablet() || static::isIpad();
+    }
+
+    /**
+     * Detect wether it's a mobile device
+     *
+     * @return  boolean  wether it's a mobile device
+     */
+    public static function isMobile()
     {
         $accept = $_SERVER['HTTP_ACCEPT'];
 
@@ -49,21 +81,33 @@ class Holmes
         {
             return true;
         }
-        else
+
+        foreach (array_keys(static::$devices) as $device)
         {
-            foreach (array_keys(self::$devices) as $device)
+            if (static::isDevice($device))
             {
-                if (self::is_device($device)) return true;
+                return true;
             }
         }
+
         return false;
     }
 
-    public static function get_device($default = false)
+    /**
+     * Retrieve the device type
+     *
+     * @param   boolean  $default  default device
+     * @return  string   device name
+     * @throws  Holmes\DeviceNotDetectedException
+     */
+    public static function getDevice($default = false)
     {
-        foreach (array_keys(self::$devices) as $device)
+        foreach (array_keys(static::$devices) as $device)
         {
-            if (self::is_device($device)) return $device;
+            if (static::isDevice($device))
+            {
+                return $device;
+            }
         }
 
         if ($default === false)
@@ -74,9 +118,16 @@ class Holmes
         return $default;
     }
 
-    protected static function is_device($device)
+    /**
+     * Detect wether it's a certaim device
+     *
+     * @param   string   $device  device name
+     * @return  boolean  wether it's a device
+     */
+    protected static function isDevice($device)
     {
         $ua = $_SERVER['HTTP_USER_AGENT'];
-        return (bool)preg_match("/" . self::$devices[$device] . "/i", $ua);
+
+        return (bool) preg_match('/' . static::$devices[$device] . '/i', $ua);
     }
 }
