@@ -2,9 +2,9 @@
     "name": "holmes/holmes",
     "description": "Mobile device detection",
     "require": {
-		"php": ">=5.3.3"
-	},
-	"autoload": {
-		"classmap": ["Holmes.php"]
-	}
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "classmap": ["Holmes.php"]
+    }
 }
