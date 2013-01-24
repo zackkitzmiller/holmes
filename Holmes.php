@@ -18,7 +18,7 @@ class Holmes
      */
     protected static $devices = array(
         "android"           => "android.*mobile",
-        "androidtablet"     => "android' + 'chrome\/[.0-9]* (?!mobile)",
+        "androidtablet"     => "android.*chrome/[.0-9]* (mobile)?",
         "blackberry"        => "blackberry",
         "blackberrytablet"  => "rim tablet os",
         "iphone"            => "(iphone|ipod)",
