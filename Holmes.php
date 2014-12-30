@@ -71,6 +71,11 @@ class Holmes
      */
     public static function isMobile()
     {
+        if ( empty($_SERVER['HTTP_ACCEPT']) )
+        {
+            return false;
+        }
+        
         $accept = $_SERVER['HTTP_ACCEPT'];
 
         if (isset($_SERVER['HTTP_X_WAP_PROFILE']) || isset($_SERVER['HTTP_PROFILE']))
